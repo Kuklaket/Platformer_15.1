@@ -8,10 +8,9 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] private Flipper _flipper;
     [SerializeField] private InputReader _inputReader;
     [SerializeField] private GroundDetector _groundDetector;
+    [SerializeField] private CharacterAnimator _characterAnimator;
 
     private bool _isMoving = false;
-
-    public bool IsGrounded { get; private set; } = true;
 
     public event Action<bool> MovementStateChanged;
 
@@ -19,12 +18,24 @@ public class PlayerMover : MonoBehaviour
     {
         _flipper = GetComponentInChildren<Flipper>();
         _groundDetector = GetComponent<GroundDetector>();
+        _characterAnimator = GetComponent<CharacterAnimator>();
+    }
+
+    private void OnEnable()
+    {
+        _groundDetector.GroundedChanged += ChangeAnimation;
+    }
+
+    private void OnDisable()
+    {
+        _groundDetector.GroundedChanged -= ChangeAnimation;
     }
 
     private void OnDestroy()
     {
         _inputReader.Moving -= HandleMoveInput;
     }
+
     public void Initialize(InputReader inputReader)
     {
         _inputReader = inputReader;
@@ -45,12 +56,17 @@ public class PlayerMover : MonoBehaviour
         bool wasMoved = _isMoving;
         _isMoving = Mathf.Abs(speed) > 0;
 
-        if (wasMoved != _isMoving && _groundDetector.IsGrounded)
-            MovementStateChanged?.Invoke(_isMoving);
+        if (wasMoved != _isMoving)
+            _characterAnimator.HandleMovementStateChange(IsRunning, _groundDetector.IsGrounded);
     }
 
     private void Move(float horizontalInput)
     {
         transform.Translate(new Vector3(horizontalInput * _moveSpeed * Time.deltaTime, 0, 0), Space.World);
+    }
+
+    private void ChangeAnimation(bool isGrounded)
+    {
+        _characterAnimator.HandleGroundedChange(isGrounded, IsRunning);
     }
 }

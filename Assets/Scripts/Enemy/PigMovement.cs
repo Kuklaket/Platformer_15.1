@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PigMovement : MovementController
+public class PigMovement : MonoBehaviour 
 {
     [SerializeField] private Transform _waypoint;
     [SerializeField] private float _speed = 2f;
@@ -9,11 +9,6 @@ public class PigMovement : MovementController
     [SerializeField] private PatrolDetector _detector;
 
     private bool _isEnemyDetected = false;
-
-    private void FixedUpdate()
-    {
-        HandleMovement();
-    }
 
     private void OnEnable()
     {
@@ -37,7 +32,7 @@ public class PigMovement : MovementController
         _waypoint = waypoint;
     }
 
-    protected override void HandleMovement()
+    public void HandleMovement()
     {
         if (_isEnemyDetected)
         {

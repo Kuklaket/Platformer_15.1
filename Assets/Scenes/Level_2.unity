@@ -3535,6 +3535,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1839798827704913616, guid: f74e03bfc8678614fb8efcccc0032216, type: 3}
+      propertyPath: _inputReader
+      value: 
+      objectReference: {fileID: 398130592}
+    - target: {fileID: 1839798827704913616, guid: f74e03bfc8678614fb8efcccc0032216, type: 3}
+      propertyPath: _groundDetector
+      value: 
+      objectReference: {fileID: 599538952}
     - target: {fileID: 1839798827704913617, guid: f74e03bfc8678614fb8efcccc0032216, type: 3}
       propertyPath: m_SortingOrder
       value: 5
@@ -3659,6 +3667,10 @@ PrefabInstance:
       propertyPath: _inputReader
       value: 
       objectReference: {fileID: 398130592}
+    - target: {fileID: 1839798827704914220, guid: f74e03bfc8678614fb8efcccc0032216, type: 3}
+      propertyPath: _characterAnimator
+      value: 
+      objectReference: {fileID: 599538918}
     - target: {fileID: 2475993758527637355, guid: f74e03bfc8678614fb8efcccc0032216, type: 3}
       propertyPath: _rayDistance
       value: 2
@@ -3860,6 +3872,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbb96a81ac99a2142a104737f6652785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &599538952 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1839798827704914213, guid: f74e03bfc8678614fb8efcccc0032216, type: 3}
+  m_PrefabInstance: {fileID: 544820267}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544820268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0f26675fc4798e449253c3c01c0a369, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &599538957 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 1839798827704913622, guid: f74e03bfc8678614fb8efcccc0032216, type: 3}
+  m_PrefabInstance: {fileID: 544820267}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &672580346
 GameObject:
   m_ObjectHideFlags: 0
@@ -5406,7 +5434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6857292a634809a40a35c17f8cc7fcc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyAttack: {fileID: 1477725427}
+  _enemyAttack: {fileID: 0}
   _playerAttack: {fileID: 599538903}
 --- !u!4 &1201660810
 Transform:
@@ -13135,6 +13163,14 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 112874309d1b1a44f9866f4a0fb77416, type: 2}
+    - target: {fileID: 1099751213509742690, guid: 9b51a95fa87595c45bc0f75222e05360, type: 3}
+      propertyPath: _pigMovement
+      value: 
+      objectReference: {fileID: 1477725419}
+    - target: {fileID: 1099751213509742690, guid: 9b51a95fa87595c45bc0f75222e05360, type: 3}
+      propertyPath: _patrolDetector
+      value: 
+      objectReference: {fileID: 1477725418}
     - target: {fileID: 3385266143461095526, guid: 9b51a95fa87595c45bc0f75222e05360, type: 3}
       propertyPath: _enemy
       value: 
@@ -13147,6 +13183,10 @@ PrefabInstance:
       propertyPath: _inputReader
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3385266143461095526, guid: 9b51a95fa87595c45bc0f75222e05360, type: 3}
+      propertyPath: _pigAnimator
+      value: 
+      objectReference: {fileID: 1477725433}
     - target: {fileID: 3385266143461095526, guid: 9b51a95fa87595c45bc0f75222e05360, type: 3}
       propertyPath: targetLayer.m_Bits
       value: 256
@@ -13291,7 +13331,24 @@ PrefabInstance:
       propertyPath: _rayDistance
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8985783688536837594, guid: 9b51a95fa87595c45bc0f75222e05360, type: 3}
+      propertyPath: _enemy
+      value: 
+      objectReference: {fileID: 1477725422}
+    - target: {fileID: 8985783688536837594, guid: 9b51a95fa87595c45bc0f75222e05360, type: 3}
+      propertyPath: _pigAnimator
+      value: 
+      objectReference: {fileID: 1477725433}
+    - target: {fileID: 8985783688536837594, guid: 9b51a95fa87595c45bc0f75222e05360, type: 3}
+      propertyPath: _takeDamageCollider
+      value: 
+      objectReference: {fileID: 599538957}
+    - target: {fileID: 8985783688536837594, guid: 9b51a95fa87595c45bc0f75222e05360, type: 3}
+      propertyPath: _targetLayerMask.m_Bits
+      value: 264
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3385266143461095526, guid: 9b51a95fa87595c45bc0f75222e05360, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9b51a95fa87595c45bc0f75222e05360, type: 3}
 --- !u!4 &1477725402 stripped
 Transform:
@@ -13373,17 +13430,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e1fc981fb86d7a4fb881a92436d45a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1477725427 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3385266143461095526, guid: 9b51a95fa87595c45bc0f75222e05360, type: 3}
-  m_PrefabInstance: {fileID: 1477725401}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1477725404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 640807a08aad40e418660f19ff736080, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &1477725431 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 868919989261611313, guid: 9b51a95fa87595c45bc0f75222e05360, type: 3}
@@ -13402,7 +13448,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 1477725431}
-  _pigAttack: {fileID: 1477725427}
 --- !u!58 &1477725435
 CircleCollider2D:
   m_ObjectHideFlags: 0

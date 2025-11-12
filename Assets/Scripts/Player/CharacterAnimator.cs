@@ -4,26 +4,10 @@ using UnityEngine;
 public class CharacterAnimator : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
-    [SerializeField] private PlayerMover _playerMover;
-    [SerializeField] private GroundDetector _groundDetector;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        _playerMover = GetComponent<PlayerMover>();
-        _groundDetector = GetComponent<GroundDetector>();
-    }
-
-    private void OnEnable()
-    {
-        _playerMover.MovementStateChanged += HandleMovementStateChange;
-        _groundDetector.GroundedChanged += HandleGroundedChange;
-    }
-
-    private void OnDisable()
-    {
-        _playerMover.MovementStateChanged -= HandleMovementStateChange;
-        _groundDetector.GroundedChanged -= HandleGroundedChange;
     }
 
     public void PlayRun()
@@ -60,9 +44,9 @@ public class CharacterAnimator : MonoBehaviour
         _animator.SetBool(GameConstants.AnimatorParams.IsAttack, false);
     }
 
-    private void HandleMovementStateChange(bool isRunning)
+    public void HandleMovementStateChange(bool isRunning, bool isGrounded)
     {
-        if (_groundDetector.IsGrounded)
+        if (isGrounded)
         {
             if (isRunning)
                 PlayRun();
@@ -71,11 +55,11 @@ public class CharacterAnimator : MonoBehaviour
         }
     }
 
-    private void HandleGroundedChange(bool isGrounded)
+    public void HandleGroundedChange(bool isGrounded, bool isRunning)
     {
         if (isGrounded)
         {
-            if (_playerMover.IsRunning)
+            if (isRunning)
                 PlayRun();
             else
                 PlayIdle();

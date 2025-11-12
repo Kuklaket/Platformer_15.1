@@ -8,7 +8,7 @@ public class PatrolDetector : MonoBehaviour
 
     public event Action<bool> PlayerDetected;
 
-    void Update()
+    public void TryDetectPlayer()
     {
         Vector2 direction = transform.right;
 

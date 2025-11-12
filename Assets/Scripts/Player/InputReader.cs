@@ -11,26 +11,19 @@ public class InputReader : MonoBehaviour
     public event UnityAction JumpPressed;
     public event UnityAction AttackPressed;
 
-    private void Update()
-    {
-        HandleMovementInput();
-        HandleJumpInput();
-        HandleAttackInput();
-    }
-
-    private void HandleMovementInput()
+    public void HandleMovementInput()
     {
         float horizontalInput = Input.GetAxis(Horizontal);
         Moving?.Invoke(horizontalInput);
     }
 
-    private void HandleJumpInput()
+    public void HandleJumpInput()
     {
         if (Input.GetButtonDown(Jump))
             JumpPressed?.Invoke();
     }
 
-    private void HandleAttackInput()
+    public void HandleAttackInput()
     {
         if (Input.GetButtonDown(Attack))
             AttackPressed?.Invoke();

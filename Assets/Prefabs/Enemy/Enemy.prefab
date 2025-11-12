@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 5639759657078336330}
   - component: {fileID: 868919989261611313}
   - component: {fileID: 5021109464504555520}
+  - component: {fileID: 8985783688536837594}
   - component: {fileID: 6143328342893340117}
   - component: {fileID: 5047692889332073659}
   - component: {fileID: 1099751213509742690}
   - component: {fileID: 8446590276084614154}
   - component: {fileID: 4250976928098831491}
-  - component: {fileID: 3385266143461095526}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -126,6 +126,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _visualTransform: {fileID: 0}
+--- !u!114 &8985783688536837594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3476986148501605111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd01eb44a565fbe46b3cadafc679a7c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemy: {fileID: 0}
+  _pigAnimator: {fileID: 0}
+  _takeDamageCollider: {fileID: 0}
+  _targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!50 &6143328342893340117
 Rigidbody2D:
   serializedVersion: 4
@@ -185,6 +203,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e1fc981fb86d7a4fb881a92436d45a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pigMovement: {fileID: 0}
+  _patrolDetector: {fileID: 0}
 --- !u!114 &8446590276084614154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,6 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbb96a81ac99a2142a104737f6652785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rayDistance: 0
 --- !u!114 &4250976928098831491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,20 +233,3 @@ MonoBehaviour:
   _waypoints: []
   _flipper: {fileID: 0}
   _pigMovement: {fileID: 0}
---- !u!114 &3385266143461095526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3476986148501605111}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 640807a08aad40e418660f19ff736080, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enemy: {fileID: 0}
-  _takeDamageCollider: {fileID: 0}
-  _targetLayerMask:
-    serializedVersion: 2
-    m_Bits: 8
