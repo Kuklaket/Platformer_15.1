@@ -12,6 +12,6 @@ public class Enemy : BattleEntity
 
     private void Update()
     {
-        _patrolDetector.TryDetectPlayer();
+        _patrolDetector.AttemptPlayerDetection();
     }
 }

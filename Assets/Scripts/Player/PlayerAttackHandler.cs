@@ -20,26 +20,26 @@ public class PlayerAttackHandler: MonoBehaviour
 
     private void OnEnable()
     {
-        _inputReader.AttackPressed += TryAttack;
+        _inputReader.AttackPressed += AttemptAttack;
     }
     private void OnDisable()
     {
-        _inputReader.AttackPressed -= TryAttack;
+        _inputReader.AttackPressed -= AttemptAttack;
     }
 
-    private void TryAttack()
+    private void AttemptAttack()
     {
         if (_player.TryGetComponent<Stats>(out Stats stats))
         {
             if (stats.CanAttack)
             {
                 stats.StartAttackCooldown();
-                AttackHandler();
+                ExecuteAttack();
             }
         }
     } 
 
-    private void AttackHandler()
+    private void ExecuteAttack()
     {
         _characterAnimator?.PlayAttack();
 
